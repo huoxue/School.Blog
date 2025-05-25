@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>校園地圖</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #003366;
+            margin-bottom: 40px;
+        }
+
+        .map-gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .photo-block {
+            max-width: 500px;
+        }
+
+        .photo-block img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        .caption {
+            margin-top: 10px;
+        }
+
+        .caption h3 {
+            margin: 0;
+            color: #003366;
+        }
+
+        .caption p {
+            margin: 5px 0 0 0;
+            color: #333;
+        }
+
+        a {
+            color: purple;
+        }
+    </style>
+</head>
+<body>
+    <h1>校園地圖</h1>
+
+    <div class="map-gallery">
+        <div class="photo-block">
+            <img src="/static/pingshang.jpg" alt="屏商校區">
+            <div class="caption">
+                <h3>屏商校區</h3>
+                <p>主要為商業科系與行政辦公室所在地。也有包含操場、室內羽球館等運動設施。羽球館回音很大。</p>
+            </div>
+        </div>
+
+        <div class="photo-block">
+            <img src="/static/pingshi.jpg" alt="屏師校區">
+            <div class="caption">
+                <h3>屏師校區</h3>
+                <p>以理學院與藝術相關科系為核心的教學場域。具有游泳池、實驗室、畫展廳等多樣設施。圓廳很好睡覺。</p>
+            </div>
+        </div>
+
+        <div class="photo-block">
+            <img src="/static/minsheng.jpg" alt="民生校區">
+            <div class="caption">
+                <h3>民生校區</h3>
+                <p>包含體育館與大量生活機能設施並以教育學院為主的校區。五育二樓有吉祥物-冰淇淋杓。</p>
+            </div>
+        </div>
+    </div>
+
+    <p style="margin-top: 40px;"><a href="/">返回首頁</a></p>
+</body>
+</html>

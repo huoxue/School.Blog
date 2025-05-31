@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>學校部落格</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>歡迎來到我們的學校部落格！</h1>
+    <a href="/about">關於我們</a>
+    <a href="/map">校園地圖</a>
+
+    <ul>
+        {% for post in posts %}
+        <li><a href="/post/{{ loop.index0 }}">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+

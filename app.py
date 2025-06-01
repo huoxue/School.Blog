@@ -19,21 +19,6 @@ def post(post_id):
 @app.route("/map")
 def map():
     return render_template("map.html")
-    
-@app.route("/admission")
-def admission():
-    return "<h1>招生資訊頁面尚在建置中</h1>"
 
-@app.route("/academics")
-def academics():
-    return "<h1>學術單位頁面尚在建置中</h1>"
-
-@app.route("/administration")
-def administration():
-    return "<h1>行政單位頁面尚在建置中</h1>"
-
-@app.route("/library")
-def library():
-    return "<h1>圖書館頁面尚在建置中</h1>"
 if __name__ == "__main__":
     app.run(debug=True)

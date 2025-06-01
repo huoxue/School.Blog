@@ -30,7 +30,6 @@ def index():
     end = start + COMMENTS_PER_PAGE
     page_comments = comments[start:end]
 
-    # 這裡傳入前端變數，包含分頁留言與其他靜態資料
     return render_template(
         "front.html",
         comments=page_comments,
@@ -54,6 +53,14 @@ def index():
             "電話：08-7663800　傳真：08-7234406"
         ]
     )
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+@app.route("/map")
+def map_page():
+    return render_template("map.html")
 
 @app.route("/add_comment", methods=["POST"])
 def add_comment():

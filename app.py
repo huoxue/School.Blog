@@ -6,7 +6,7 @@ from data import posts
 
 @app.route("/")
 def index():
-    return render_template("index.html", posts=posts)
+    return render_template("front.html")
 
 @app.route("/about")
 def about():

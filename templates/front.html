@@ -7,6 +7,7 @@
         body { font-family: "Noto Sans TC", sans-serif; margin: 0; padding: 1em; background-color: #f9f9f9; }
         header { background-color: #004B97; color: white; padding: 1em; text-align: center; }
         nav ul { list-style: none; padding: 0; display: flex; background-color: #0066CC; margin: 0; }
+        nav ul li { margin: 0; }
         nav ul li a { display: block; padding: 1em; color: white; text-decoration: none; }
         nav ul li a:hover { background-color: #0055AA; }
         .container { max-width: 900px; margin: 20px auto; background: white; padding: 1em; border-radius: 8px; box-shadow: 0 0 8px #ccc; }
@@ -43,8 +44,8 @@
 </header>
 <nav>
     <ul>
-        <li><a href="#">關於我們</a></li>
-        <li><a href="#">校園地圖</a></li>
+        <li><a href="{{ url_for('about') }}">關於我們</a></li>
+        <li><a href="{{ url_for('map_page') }}">校園地圖</a></li>
     </ul>
 </nav>
 
@@ -116,3 +117,25 @@ async function submitComment() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ text: text })
+        });
+        const data = await response.json();
+
+        if (data.success) {
+            window.location.reload();
+        } else {
+            errorMsg.textContent = data.error || '送出留言失敗';
+            errorMsg.style.display = 'block';
+        }
+    } catch (err) {
+        errorMsg.textContent = '發生錯誤，請稍後再試。';
+        errorMsg.style.display = 'block';
+    }
+}
+
+function changePage(page) {
+    if(page < 1) return;
+    window.location.href = `/?page=${page}`;
+}
+</script>
+</body>
+</html>

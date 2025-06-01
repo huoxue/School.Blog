@@ -1,127 +1,157 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <title>國立屏東大學 NPTU</title>
-    <style>
-        body { font-family: "Noto Sans TC", sans-serif; margin: 0; padding: 0; }
-        header, footer { background-color: #004B97; color: white; padding: 1em; }
-        nav ul { list-style: none; padding: 0; display: flex; background-color: #0066CC; margin: 0; }
-        nav ul li { margin: 0; }
-        nav ul li a { display: block; padding: 1em; color: white; text-decoration: none; }
-        nav ul li a:hover { background-color: #0055AA; }
-        .container { padding: 2em; }
-        .section { margin-bottom: 2em; }
-        h2 { color: #004B97; }
-        footer p { margin: 0.5em 0; }
-        .event-post, .blog-post { margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #ccc; }
-        .event-post h3 a { color: #004B97; text-decoration: none; }
-        .event-post h3 a:hover { text-decoration: underline; }
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        .university-info, .comment-section { background-color: #f0f4f8; padding: 15px; border-radius: 8px; margin-top: 20px; }
-        .comment-section textarea { width: 100%; height: 100px; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; resize: none; }
-        .comment-section button { padding: 10px 20px; background-color: #004B97; color: white; border: none; border-radius: 5px; cursor: pointer; }
-        .comment-section button:hover { background-color: #003a77; }
-        .comment-list { margin-top: 20px; }
-        .comment { padding: 10px; border-bottom: 1px solid #ddd; }
-        .comment .date { font-size: 0.9em; color: #666; }
-    </style>
+  <meta charset="UTF-8">
+  <title>國立屏東大學 NPTU</title>
+  <style>
+    body { font-family: "Noto Sans TC", sans-serif; margin: 0; padding: 0; }
+    header, footer { background-color: #004B97; color: white; padding: 1em; }
+    nav ul { list-style: none; padding: 0; display: flex; background-color: #0066CC; margin: 0; }
+    nav ul li { margin: 0; }
+    nav ul li a { display: block; padding: 1em; color: white; text-decoration: none; }
+    nav ul li a:hover { background-color: #0055AA; }
+    .container { padding: 2em; }
+    .section { margin-bottom: 2em; }
+    h2 { color: #004B97; }
+    footer p { margin: 0.5em 0; }
+
+    .comment-section {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #f0f4f8;
+      border-radius: 8px;
+    }
+    .comment-section textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: none;
+    }
+    .comment-section button {
+      padding: 10px 20px;
+      background-color: #004a99;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .comment-section button:hover {
+      background-color: #003a77;
+    }
+    .comment-list {
+      margin-top: 20px;
+    }
+    .comment {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+    .comment .date {
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>國立屏東大學 NPTU</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#">關於我們</a></li>
-            <li><a href="#">校園地圖</a></li>
-        </ul>
-    </nav>
-    <div class="container">
-        <div class="section">
-            <h2>最新消息</h2>
-            <ul>
-                <li>114學年度第1學期學生選課時程公告</li>
-                <li>2025第五屆大數據精準行銷盃競賽</li>
-                <li>★總獎金30萬★屏大2025夏日大進級。酷斯拉自主學習競賽</li>
-            </ul>
-        </div>
-        <div class="section">
-            <h2>校園快訊</h2>
-            <ul>
-                <li>屏東大學與UNISMA合作開設新型專班及雙聯學位</li>
-                <li>資訊學院深化與朱拉隆功大學的學術合作</li>
-                <li>屏東大學管理學院與泰國宋卡王子大學簽署合作協議</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>活動簡介</h2>
-            <div class="event-post">
-                <h3><a href="https://indigenous.nptu.edu.tw/p/404-1133-183953.php?Lang=zh-tw">原住民學專班 - 文北傳承的超級英雄訓練營</a></h3>
-                <p class="date">2025年6月1日</p>
-                <p>準備好變身超級英雄了嗎？用最濃厚的部落精神搭配現代知識，讓你成為文北界的超級明星！✨</p>
-            </div>
-            <div class="event-post">
-                <h3><a href="https://hakkam.nptu.edu.tw/p/404-1135-183983.php?Lang=zh-tw">客家研究研究生學術論文研討會</a></h3>
-                <p class="date">2025年5月28日</p>
-                <p>從傳統文化到學術新視野，論文也能變成freestyle的舞台！📚🎵</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>校園影音</h2>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/eD-yVR6O-nw" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <div class="university-info">
-            <h3>關於屏東大學</h3>
-            <p>屏東大學位於美麗的屏東平原，擁有自然環境與多元學術氛圍，從原住民文化到客家研究，樣樣精彩。歡迎一起加入，打造專屬的大學回憶！</p>
-        </div>
-
-        <div class="comment-section">
-            <h2>留言板</h2>
-            <textarea id="commentInput" placeholder="留下你的心得或與大家互動吧！"></textarea>
-            <button onclick="addComment()">送出留言</button>
-            <div id="commentList" class="comment-list"></div>
-        </div>
+  <header>
+    <h1>國立屏東大學 NPTU</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="#">關於我們</a></li>
+      <li><a href="#">校園地圖</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <div class="section">
+      <h2>最新消息</h2>
+      <ul>
+        <li>114學年度第1學期學生選課時程公告</li>
+        <li>2025第五屆大數據精準行銷盃競賽</li>
+        <li>★總獎金30萬★屏大2025夏日大進級。酷斯拉自主學習競賽</li>
+      </ul>
     </div>
-    <footer>
-        <p>民生校區：900391 屏東市民生路4-18號</p>
-        <p>屏商校區：900392 屏東市民生東路51號</p>
-        <p>屏師校區：900393 屏東市林森路1號</p>
-        <p>電話：08-7663800　傳真：08-7234406</p>
-    </footer>
+    <div class="section">
+      <h2>校園快訊</h2>
+      <ul>
+        <li>屏東大學與UNISMA合作開設新型專班及雙聯學位</li>
+        <li>資訊學院深化與朱拉隆功大學的學術合作</li>
+        <li>屏東大學管理學院與泰國宋卡王子大學簽署合作協議</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>活動簡介</h2>
+      <p>🎉 原住民學專班 - 超級英雄訓練營 ✨</p>
+      <p>📚 客家研究研究生論文研討會 🎵</p>
+    </div>
+    <div class="section">
+      <h2>關於屏東大學</h2>
+      <p>屏東大學可是個超chill的地方！擁有自然環境與多元學術氛圍，從原住民文化到客家研究，應有盡有。還有超多活動與競賽等你參加！</p>
+    </div>
+    <div class="section">
+      <h2>校園影音</h2>
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+        <iframe src="https://www.youtube.com/embed/eD-yVR6O-nw"
+                frameborder="0"
+                allowfullscreen
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+        </iframe>
+      </div>
+    </div>
+    <div class="comment-section">
+      <h2>留言板</h2>
+      <textarea id="commentInput" placeholder="留下你的心得或與大家互動吧！"></textarea>
+      <button onclick="addComment()">送出留言</button>
+      <div id="commentList" class="comment-list"></div>
+    </div>
+  </div>
+  <footer>
+    <p>民生校區：900391 屏東市民生路4-18號</p>
+    <p>屏商校區：900392 屏東市民生東路51號</p>
+    <p>屏師校區：900393 屏東市林森路1號</p>
+    <p>電話：08-7663800　傳真：08-7234406</p>
+  </footer>
 
-    <script>
-        function addComment() {
-            const commentInput = document.getElementById('commentInput');
-            const commentList = document.getElementById('commentList');
-            const commentText = commentInput.value.trim();
-
-            if (commentText === '') {
-                alert('請輸入留言內容哦！');
-                return;
-            }
-
-            const now = new Date();
-            const dateString = now.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
-
-            const commentDiv = document.createElement('div');
-            commentDiv.className = 'comment';
-            commentDiv.innerHTML = `
-                <p>${commentText}</p>
-                <p class="date">留言時間：${dateString}</p>
-            `;
-            commentList.prepend(commentDiv);
-
-            commentInput.value = '';
+  <script>
+    function addComment() {
+      const commentInput = document.getElementById('commentInput');
+      const commentText = commentInput.value.trim();
+      if (commentText === '') {
+        alert('請輸入留言內容哦！');
+        return;
+      }
+      fetch('/add_comment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ comment: commentText })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          commentInput.value = '';
+          loadComments();
         }
-    </script>
-</body>
-</html>
+      });
+    }
+
+    function loadComments() {
+      fetch('/get_comments')
+        .then(response => response.json())
+        .then(comments => {
+          const commentList = document.getElementById('commentList');
+          commentList.innerHTML = '';
+          comments.forEach(comment => {
+            const div = document.createElement('div');
+            div.className = 'comment';
+            div.innerHTML = `<p>${comment.text}</p>`;
+            commentList.appendChild(div);
+          });
+        });
+    }
+
+    window.onload = loadComments;
+  </script>
 </body>
 </html>

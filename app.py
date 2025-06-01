@@ -1,24 +1,37 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
+import json
+import os
 
 app = Flask(__name__)
+COMMENTS_FILE = 'comments.json'
 
-from data import posts
+def load_comments():
+    if os.path.exists(COMMENTS_FILE):
+        with open(COMMENTS_FILE, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    return []
 
-@app.route("/")
-def index():
-    return render_template("front.html")
+def save_comments(comments):
+    with open(COMMENTS_FILE, 'w', encoding='utf-8') as f:
+        json.dump(comments, f, ensure_ascii=False, indent=2)
 
-@app.route("/about")
-def about():
-    return render_template("about.html", posts=posts)
-    
-@app.route("/post/<int:post_id>")
-def post(post_id):
-    return render_template("post.html", post=posts[post_id])
+@app.route('/')
+def front_page():
+    return render_template('front.html')
 
-@app.route("/map")
-def map():
-    return render_template("map.html")
+@app.route('/get_comments')
+def get_comments():
+    return jsonify(load_comments())
 
-if __name__ == "__main__":
+@app.route('/add_comment', methods=['POST'])
+def add_comment():
+    comment = request.json.get('comment')
+    if comment:
+        comments = load_comments()
+        comments.insert(0, {"text": comment})
+        save_comments(comments)
+        return jsonify(success=True)
+    return jsonify(success=False), 400
+
+if __name__ == '__main__':
     app.run(debug=True)

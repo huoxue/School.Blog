@@ -1,18 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
 <head>
-    <title>學校部落格</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <meta charset="UTF-8" />
+    <title>關於我們 - 國立屏東大學 NPTU</title>
+    <style>
+        body { font-family: "Noto Sans TC", sans-serif; margin: 0; padding: 0; }
+        header, footer { background-color: #004B97; color: white; padding: 1em; }
+        nav ul { list-style: none; padding: 0; display: flex; background-color: #0066CC; margin: 0; }
+        nav ul li { margin: 0; }
+        nav ul li a { display: block; padding: 1em; color: white; text-decoration: none; }
+        nav ul li a:hover { background-color: #0055AA; }
+        .container { padding: 2em; }
+        h1, h2 { color: #004B97; }
+        footer p { margin: 0.5em 0; }
+        ul.post-list { padding-left: 1.2em; }
+        ul.post-list li { margin-bottom: 0.5em; }
+    </style>
 </head>
 <body>
-    <h1>歡迎來到我們的學校部落格！</h1>
-    <h1>關於我們</h1>
-<p>我們是一所注重品格與創新教育的學校。</p>
-    <a href="/">返回</a>
-    <ul>
-        {% for post in posts %}
-        <li><a href="/post/{{ loop.index0 }}">{{ post.title }}</a></li>
-        {% endfor %}
-    </ul>
+    <header>
+        <h1>國立屏東大學 NPTU</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">首頁</a></li>
+            <li><a href="{{ url_for('about') }}">關於我們</a></li>
+            <li><a href="{{ url_for('admission') }}">招生資訊</a></li>
+            <li><a href="{{ url_for('academics') }}">學術單位</a></li>
+            <li><a href="{{ url_for('administration') }}">行政單位</a></li>
+            <li><a href="{{ url_for('library') }}">圖書館</a></li>
+            <li><a href="{{ url_for('map') }}">校園地圖</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h2>歡迎來到我們的學校部落格！</h2>
+        <h2>關於我們</h2>
+        <p>我們是一所注重品格與創新教育的學校。</p>
+
+        <h3>部落格文章列表</h3>
+        <ul class="post-list">
+            {% for post in posts %}
+            <li><a href="{{ url_for('post', post_id=loop.index0) }}">{{ post.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <footer>
+        <p>民生校區：900391 屏東市民生路4-18號</p>
+        <p>屏商校區：900392 屏東市民生東路51號</p>
+        <p>屏師校區：900393 屏東市林森路1號</p>
+        <p>電話：08-7663800　傳真：08-7234406</p>
+    </footer>
 </body>
 </html>

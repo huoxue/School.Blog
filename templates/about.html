@@ -11,10 +11,8 @@
         nav ul li a { display: block; padding: 1em; color: white; text-decoration: none; }
         nav ul li a:hover { background-color: #0055AA; }
         .container { padding: 2em; }
-        h1, h2 { color: #004B97; }
+        h1, h2, h3 { color: #004B97; }
         footer p { margin: 0.5em 0; }
-        ul.post-list { padding-left: 1.2em; }
-        ul.post-list li { margin-bottom: 0.5em; }
     </style>
 </head>
 <body>
@@ -25,24 +23,12 @@
         <ul>
             <li><a href="{{ url_for('index') }}">首頁</a></li>
             <li><a href="{{ url_for('about') }}">關於我們</a></li>
-            <li><a href="{{ url_for('admission') }}">招生資訊</a></li>
-            <li><a href="{{ url_for('academics') }}">學術單位</a></li>
-            <li><a href="{{ url_for('administration') }}">行政單位</a></li>
-            <li><a href="{{ url_for('library') }}">圖書館</a></li>
             <li><a href="{{ url_for('map') }}">校園地圖</a></li>
         </ul>
     </nav>
     <div class="container">
-        <h2>歡迎來到我們的學校部落格！</h2>
-        <h2>關於我們</h2>
-        <p>我們是一所注重品格與創新教育的學校。</p>
-
-        <h3>部落格文章列表</h3>
-        <ul class="post-list">
-            {% for post in posts %}
-            <li><a href="{{ url_for('post', post_id=loop.index0) }}">{{ post.title }}</a></li>
-            {% endfor %}
-        </ul>
+        <h2>校園簡介</h2>
+        {{ posts[0].content | safe }}
     </div>
     <footer>
         <p>民生校區：900391 屏東市民生路4-18號</p>

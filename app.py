@@ -10,8 +10,8 @@ def index():
 
 @app.route("/about")
 def about():
-    return render_template("about.html")
-
+    return render_template("about.html", posts=posts)
+    
 @app.route("/post/<int:post_id>")
 def post(post_id):
     return render_template("post.html", post=posts[post_id])

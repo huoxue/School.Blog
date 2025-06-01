@@ -36,6 +36,18 @@
             border-color: #aaa;
             cursor: not-allowed;
         }
+        /* 活動簡介區塊 */
+        .event-section {
+            background-color: #f0f8ff;
+            border: 1px solid #004B97;
+            padding: 1em;
+            border-radius: 6px;
+            margin-bottom: 2em;
+        }
+        .event-section h3 {
+            margin-top: 0;
+            color: #003366;
+        }
     </style>
 </head>
 <body>
@@ -50,46 +62,71 @@
 </nav>
 
 <div class="container">
-    <h2>最新消息</h2>
-    <ul>
-        {% for news in news_list %}
-        <li>{{ news }}</li>
-        {% endfor %}
-    </ul>
-
-    <h2>校園快訊</h2>
-    <ul>
-        {% for cnews in campus_news_list %}
-        <li>{{ cnews }}</li>
-        {% endfor %}
-    </ul>
-
-    <h2>校園影音</h2>
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe src="{{ youtube_embed_url }}" 
-              frameborder="0" 
-              allowfullscreen 
-              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+    <!-- 最新消息 -->
+    <div class="section">
+        <h2>最新消息</h2>
+        <ul>
+            {% for news in news_list %}
+            <li>{{ news }}</li>
+            {% endfor %}
+        </ul>
     </div>
 
-    <h2>留言板</h2>
-    <div id="errorMsg" class="error" style="display:none;"></div>
-    <textarea id="commentInput" placeholder="留下你的心得或與大家互動吧！"></textarea>
-    <button onclick="submitComment()">送出留言</button>
+    <!-- 校園快訊 -->
+    <div class="section">
+        <h2>校園快訊</h2>
+        <ul>
+            {% for cnews in campus_news_list %}
+            <li>{{ cnews }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 
-    <div class="comment-list" id="commentList">
-        {% for comment in comments %}
-        <div class="comment">
-            <div>{{ comment.text | e }}</div>
-            <div class="comment-time">留言時間：{{ comment.datetime }}</div>
+    <!-- 活動簡介 -->
+    <div class="section event-section">
+        <h2>活動簡介</h2>
+        <div class="event-item">
+            <h3>第五屆大數據精準行銷盃競賽</h3>
+            <p>歡迎學生參與大數據行銷競賽，提升實務能力與跨領域合作經驗。</p>
         </div>
-        {% endfor %}
+        <div class="event-item">
+            <h3>屏大2025夏日大進級・酷斯拉自主學習競賽</h3>
+            <p>暑期自學競賽，總獎金30萬元，鼓勵學生自主學習與團隊合作。</p>
+        </div>
     </div>
 
-    <div class="pagination">
-        <button id="prevPage" onclick="changePage({{ page - 1 }})" {% if page <= 1 %}disabled{% endif %}>上一頁</button>
-        <span>第 {{ page }} 頁 / 共 {{ total_pages }} 頁</span>
-        <button id="nextPage" onclick="changePage({{ page + 1 }})" {% if page >= total_pages %}disabled{% endif %}>下一頁</button>
+    <!-- 校園影音 -->
+    <div class="section">
+        <h2>校園影音</h2>
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+          <iframe src="{{ youtube_embed_url }}" 
+                  frameborder="0" 
+                  allowfullscreen 
+                  style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+        </div>
+    </div>
+
+    <!-- 留言板 -->
+    <div class="section">
+        <h2>留言板</h2>
+        <div id="errorMsg" class="error" style="display:none;"></div>
+        <textarea id="commentInput" placeholder="留下你的心得或與大家互動吧！"></textarea>
+        <button onclick="submitComment()">送出留言</button>
+
+        <div class="comment-list" id="commentList">
+            {% for comment in comments %}
+            <div class="comment">
+                <div>{{ comment.text | e }}</div>
+                <div class="comment-time">留言時間：{{ comment.datetime }}</div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="pagination">
+            <button id="prevPage" onclick="changePage({{ page - 1 }})" {% if page <= 1 %}disabled{% endif %}>上一頁</button>
+            <span>第 {{ page }} 頁 / 共 {{ total_pages }} 頁</span>
+            <button id="nextPage" onclick="changePage({{ page + 1 }})" {% if page >= total_pages %}disabled{% endif %}>下一頁</button>
+        </div>
     </div>
 </div>
 

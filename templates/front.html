@@ -2,12 +2,16 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8" />
-    <title>國立屏東大學 NPTU - 校園部落格</title>
+    <title>國立屏東大學 NPTU</title>
     <style>
         body { font-family: "Noto Sans TC", sans-serif; margin: 0; padding: 1em; background-color: #f9f9f9; }
         header { background-color: #004B97; color: white; padding: 1em; text-align: center; }
-        .container { max-width: 800px; margin: 20px auto; background: white; padding: 1em; border-radius: 8px; box-shadow: 0 0 8px #ccc; }
+        nav ul { list-style: none; padding: 0; display: flex; background-color: #0066CC; margin: 0; }
+        nav ul li a { display: block; padding: 1em; color: white; text-decoration: none; }
+        nav ul li a:hover { background-color: #0055AA; }
+        .container { max-width: 900px; margin: 20px auto; background: white; padding: 1em; border-radius: 8px; box-shadow: 0 0 8px #ccc; }
         h1, h2 { color: #004B97; }
+        ul { padding-left: 1em; }
         textarea { width: 100%; height: 100px; padding: 8px; margin-bottom: 10px; resize: none; font-size: 1em; }
         button { background-color: #004B97; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; font-size: 1em; }
         button:hover { background-color: #003366; }
@@ -34,73 +38,81 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>國立屏東大學 NPTU 校園部落格</h1>
-    </header>
+<header>
+    <h1>國立屏東大學 NPTU</h1>
+</header>
+<nav>
+    <ul>
+        <li><a href="#">關於我們</a></li>
+        <li><a href="#">校園地圖</a></li>
+    </ul>
+</nav>
 
-    <div class="container">
-        <h2>留言板</h2>
-        <div id="errorMsg" class="error" style="display:none;"></div>
-        <textarea id="commentInput" placeholder="留下你的心得或與大家互動吧！"></textarea>
-        <button onclick="submitComment()">送出留言</button>
+<div class="container">
+    <h2>最新消息</h2>
+    <ul>
+        {% for news in news_list %}
+        <li>{{ news }}</li>
+        {% endfor %}
+    </ul>
 
-        <div class="comment-list" id="commentList">
-            {% for comment in comments %}
-            <div class="comment">
-                <div>{{ comment.text | e }}</div>
-                <div class="comment-time">留言時間：{{ comment.datetime }}</div>
-            </div>
-            {% endfor %}
-        </div>
+    <h2>校園快訊</h2>
+    <ul>
+        {% for cnews in campus_news_list %}
+        <li>{{ cnews }}</li>
+        {% endfor %}
+    </ul>
 
-        <div class="pagination">
-            <button id="prevPage" onclick="changePage({{ page - 1 }})" {% if page <= 1 %}disabled{% endif %}>上一頁</button>
-            <span>第 {{ page }} 頁 / 共 {{ total_pages }} 頁</span>
-            <button id="nextPage" onclick="changePage({{ page + 1 }})" {% if page >= total_pages %}disabled{% endif %}>下一頁</button>
-        </div>
+    <h2>校園影音</h2>
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe src="{{ youtube_embed_url }}" 
+              frameborder="0" 
+              allowfullscreen 
+              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
     </div>
 
-    <script>
-        async function submitComment() {
-            const input = document.getElementById('commentInput');
-            const errorMsg = document.getElementById('errorMsg');
-            const commentList = document.getElementById('commentList');
-            const text = input.value.trim();
+    <h2>留言板</h2>
+    <div id="errorMsg" class="error" style="display:none;"></div>
+    <textarea id="commentInput" placeholder="留下你的心得或與大家互動吧！"></textarea>
+    <button onclick="submitComment()">送出留言</button>
 
-            errorMsg.style.display = 'none';
-            if (text === '') {
-                errorMsg.textContent = '請輸入留言內容哦！';
-                errorMsg.style.display = 'block';
-                return;
-            }
+    <div class="comment-list" id="commentList">
+        {% for comment in comments %}
+        <div class="comment">
+            <div>{{ comment.text | e }}</div>
+            <div class="comment-time">留言時間：{{ comment.datetime }}</div>
+        </div>
+        {% endfor %}
+    </div>
 
-            try {
-                const response = await fetch('/add_comment', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ text: text })
-                });
-                const data = await response.json();
+    <div class="pagination">
+        <button id="prevPage" onclick="changePage({{ page - 1 }})" {% if page <= 1 %}disabled{% endif %}>上一頁</button>
+        <span>第 {{ page }} 頁 / 共 {{ total_pages }} 頁</span>
+        <button id="nextPage" onclick="changePage({{ page + 1 }})" {% if page >= total_pages %}disabled{% endif %}>下一頁</button>
+    </div>
+</div>
 
-                if (data.success) {
-                    // 新留言寫入成功後重新載入目前頁面，確保分頁正確
-                    window.location.reload();
-                } else {
-                    errorMsg.textContent = data.error || '送出留言失敗';
-                    errorMsg.style.display = 'block';
-                }
-            } catch (err) {
-                errorMsg.textContent = '發生錯誤，請稍後再試。';
-                errorMsg.style.display = 'block';
-            }
-        }
+<footer style="background-color: #004B97; color: white; padding: 1em; margin-top: 20px; text-align:center;">
+    {% for info in footer_info %}
+    <p>{{ info }}</p>
+    {% endfor %}
+</footer>
 
-        function changePage(page) {
-            if(page < 1) return;
-            // 導向指定頁面
-            window.location.href = `/?page=${page}`;
-        }
-    </script>
-</body>
-</html>
+<script>
+async function submitComment() {
+    const input = document.getElementById('commentInput');
+    const errorMsg = document.getElementById('errorMsg');
+    const text = input.value.trim();
 
+    errorMsg.style.display = 'none';
+    if (text === '') {
+        errorMsg.textContent = '請輸入留言內容哦！';
+        errorMsg.style.display = 'block';
+        return;
+    }
+
+    try {
+        const response = await fetch('/add_comment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text: text })

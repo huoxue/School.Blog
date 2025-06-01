@@ -1,157 +1,106 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <title>國立屏東大學 NPTU</title>
-  <style>
-    body { font-family: "Noto Sans TC", sans-serif; margin: 0; padding: 0; }
-    header, footer { background-color: #004B97; color: white; padding: 1em; }
-    nav ul { list-style: none; padding: 0; display: flex; background-color: #0066CC; margin: 0; }
-    nav ul li { margin: 0; }
-    nav ul li a { display: block; padding: 1em; color: white; text-decoration: none; }
-    nav ul li a:hover { background-color: #0055AA; }
-    .container { padding: 2em; }
-    .section { margin-bottom: 2em; }
-    h2 { color: #004B97; }
-    footer p { margin: 0.5em 0; }
-
-    .comment-section {
-      margin-top: 40px;
-      padding: 20px;
-      background-color: #f0f4f8;
-      border-radius: 8px;
-    }
-    .comment-section textarea {
-      width: 100%;
-      height: 100px;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      resize: none;
-    }
-    .comment-section button {
-      padding: 10px 20px;
-      background-color: #004a99;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .comment-section button:hover {
-      background-color: #003a77;
-    }
-    .comment-list {
-      margin-top: 20px;
-    }
-    .comment {
-      padding: 10px;
-      border-bottom: 1px solid #ddd;
-    }
-    .comment .date {
-      font-size: 0.9em;
-      color: #666;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <title>國立屏東大學 NPTU - 校園部落格</title>
+    <style>
+        body { font-family: "Noto Sans TC", sans-serif; margin: 0; padding: 1em; background-color: #f9f9f9; }
+        header { background-color: #004B97; color: white; padding: 1em; text-align: center; }
+        .container { max-width: 800px; margin: 20px auto; background: white; padding: 1em; border-radius: 8px; box-shadow: 0 0 8px #ccc; }
+        h1, h2 { color: #004B97; }
+        textarea { width: 100%; height: 100px; padding: 8px; margin-bottom: 10px; resize: none; font-size: 1em; }
+        button { background-color: #004B97; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; font-size: 1em; }
+        button:hover { background-color: #003366; }
+        .comment-list { margin-top: 20px; }
+        .comment { background: #e8f0fe; padding: 10px; margin-bottom: 10px; border-radius: 4px; }
+        .comment-time { font-size: 0.8em; color: #666; margin-top: 4px; }
+        .error { color: red; margin-bottom: 10px; }
+        .pagination { margin-top: 15px; text-align: center; }
+        .pagination button {
+            margin: 0 5px;
+            padding: 8px 12px;
+            font-size: 1em;
+            border-radius: 4px;
+            border: 1px solid #004B97;
+            background: white;
+            color: #004B97;
+            cursor: pointer;
+        }
+        .pagination button:disabled {
+            color: #aaa;
+            border-color: #aaa;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>國立屏東大學 NPTU</h1>
-  </header>
-  <nav>
-    <ul>
-      <li><a href="#">關於我們</a></li>
-      <li><a href="#">校園地圖</a></li>
-    </ul>
-  </nav>
-  <div class="container">
-    <div class="section">
-      <h2>最新消息</h2>
-      <ul>
-        <li>114學年度第1學期學生選課時程公告</li>
-        <li>2025第五屆大數據精準行銷盃競賽</li>
-        <li>★總獎金30萬★屏大2025夏日大進級。酷斯拉自主學習競賽</li>
-      </ul>
-    </div>
-    <div class="section">
-      <h2>校園快訊</h2>
-      <ul>
-        <li>屏東大學與UNISMA合作開設新型專班及雙聯學位</li>
-        <li>資訊學院深化與朱拉隆功大學的學術合作</li>
-        <li>屏東大學管理學院與泰國宋卡王子大學簽署合作協議</li>
-      </ul>
-    </div>
-    <div class="section">
-      <h2>活動簡介</h2>
-      <p>🎉 原住民學專班 - 超級英雄訓練營 ✨</p>
-      <p>📚 客家研究研究生論文研討會 🎵</p>
-    </div>
-    <div class="section">
-      <h2>關於屏東大學</h2>
-      <p>屏東大學可是個超chill的地方！擁有自然環境與多元學術氛圍，從原住民文化到客家研究，應有盡有。還有超多活動與競賽等你參加！</p>
-    </div>
-    <div class="section">
-      <h2>校園影音</h2>
-      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-        <iframe src="https://www.youtube.com/embed/eD-yVR6O-nw"
-                frameborder="0"
-                allowfullscreen
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-        </iframe>
-      </div>
-    </div>
-    <div class="comment-section">
-      <h2>留言板</h2>
-      <textarea id="commentInput" placeholder="留下你的心得或與大家互動吧！"></textarea>
-      <button onclick="addComment()">送出留言</button>
-      <div id="commentList" class="comment-list"></div>
-    </div>
-  </div>
-  <footer>
-    <p>民生校區：900391 屏東市民生路4-18號</p>
-    <p>屏商校區：900392 屏東市民生東路51號</p>
-    <p>屏師校區：900393 屏東市林森路1號</p>
-    <p>電話：08-7663800　傳真：08-7234406</p>
-  </footer>
+    <header>
+        <h1>國立屏東大學 NPTU 校園部落格</h1>
+    </header>
 
-  <script>
-    function addComment() {
-      const commentInput = document.getElementById('commentInput');
-      const commentText = commentInput.value.trim();
-      if (commentText === '') {
-        alert('請輸入留言內容哦！');
-        return;
-      }
-      fetch('/add_comment', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ comment: commentText })
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          commentInput.value = '';
-          loadComments();
+    <div class="container">
+        <h2>留言板</h2>
+        <div id="errorMsg" class="error" style="display:none;"></div>
+        <textarea id="commentInput" placeholder="留下你的心得或與大家互動吧！"></textarea>
+        <button onclick="submitComment()">送出留言</button>
+
+        <div class="comment-list" id="commentList">
+            {% for comment in comments %}
+            <div class="comment">
+                <div>{{ comment.text | e }}</div>
+                <div class="comment-time">留言時間：{{ comment.datetime }}</div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="pagination">
+            <button id="prevPage" onclick="changePage({{ page - 1 }})" {% if page <= 1 %}disabled{% endif %}>上一頁</button>
+            <span>第 {{ page }} 頁 / 共 {{ total_pages }} 頁</span>
+            <button id="nextPage" onclick="changePage({{ page + 1 }})" {% if page >= total_pages %}disabled{% endif %}>下一頁</button>
+        </div>
+    </div>
+
+    <script>
+        async function submitComment() {
+            const input = document.getElementById('commentInput');
+            const errorMsg = document.getElementById('errorMsg');
+            const commentList = document.getElementById('commentList');
+            const text = input.value.trim();
+
+            errorMsg.style.display = 'none';
+            if (text === '') {
+                errorMsg.textContent = '請輸入留言內容哦！';
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            try {
+                const response = await fetch('/add_comment', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: text })
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    // 新留言寫入成功後重新載入目前頁面，確保分頁正確
+                    window.location.reload();
+                } else {
+                    errorMsg.textContent = data.error || '送出留言失敗';
+                    errorMsg.style.display = 'block';
+                }
+            } catch (err) {
+                errorMsg.textContent = '發生錯誤，請稍後再試。';
+                errorMsg.style.display = 'block';
+            }
         }
-      });
-    }
 
-    function loadComments() {
-      fetch('/get_comments')
-        .then(response => response.json())
-        .then(comments => {
-          const commentList = document.getElementById('commentList');
-          commentList.innerHTML = '';
-          comments.forEach(comment => {
-            const div = document.createElement('div');
-            div.className = 'comment';
-            div.innerHTML = `<p>${comment.text}</p>`;
-            commentList.appendChild(div);
-          });
-        });
-    }
-
-    window.onload = loadComments;
-  </script>
+        function changePage(page) {
+            if(page < 1) return;
+            // 導向指定頁面
+            window.location.href = `/?page=${page}`;
+        }
+    </script>
 </body>
 </html>
+
